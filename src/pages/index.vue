@@ -15,7 +15,7 @@ useTitle('Modele | Home')
 
 <template>
   <div>
-    <Github />
+    <Github username="zyyv" :last-month="6" />
     <!-- <div f-c-c h-screen>
       <header flex gap-5 py-2 px-5>
         <button
