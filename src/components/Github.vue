@@ -1,5 +1,6 @@
 <script lang='ts' setup>
 import { ApiResponse, Day } from '~/types/common'
+import { groupByWeeks } from '~/utils'
 
 const props = withDefaults(defineProps<{
   username: string
@@ -35,6 +36,8 @@ onMounted(async() => {
   const data = await useContributions(props.username)
   if (props.lastMonth != null) {
     state.contributions = filterLastByMonth(data.contributions, props.lastMonth)
+    // console.log(groupByWeeks(state.contributions))
+
     state.total = { [`${props.lastMonth}Mons Ago`]: state.contributions.reduce((total, item) => total + item.count, 0) }
   } else {
     state.contributions = data.contributions
