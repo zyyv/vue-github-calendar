@@ -48,12 +48,10 @@ export function groupByWeeks(days: Day[], weekStart: WeekDay = 0): Weeks {
 
   const paddedDays: Array<Day | undefined> = [...Array(differenceInCalendarDays(firstDate, firstCalendarDate)).fill(undefined), ...normalizedDays]
 
-  return Array(Math.ceil(paddedDays.length / 7))
-    .fill(undefined)
-    .map((_, calendarWeek) => paddedDays.slice(calendarWeek * 7, calendarWeek * 7 + 7))
+  return Array.from({ length: Math.ceil(paddedDays.length / 7) }, (_, i) => paddedDays.slice(i * 7, i * 7 + 7))
 }
 
-export function normalizeCalendarDays(days: Array<Day>): Array<Day> {
+export function normalizeCalendarDays(days: Day[]): Day[] {
   const daysMap = days.reduce((map, day) => {
     map.set(day.date, day)
     return map
@@ -63,7 +61,7 @@ export function normalizeCalendarDays(days: Array<Day>): Array<Day> {
     const date = formatISO(day, { representation: 'date' })!
 
     if (daysMap.has(date))
-      return daysMap.get(date) as Day
+      return daysMap.get(date)!
 
     return {
       date,
