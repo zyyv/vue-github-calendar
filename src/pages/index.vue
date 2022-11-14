@@ -14,7 +14,7 @@ useTitle('Modele | Home')
 </script>
 
 <template>
-  <div px-10>
+  <div mx-10>
     <Github username="zyyv" />
     <!-- <div f-c-c h-screen>
       <header flex gap-5 py-2 px-5>

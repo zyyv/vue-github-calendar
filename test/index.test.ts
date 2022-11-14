@@ -76,4 +76,12 @@ describe('utils test', () => {
       ]
     `)
   })
+
+  it('last year', () => {
+    const lastYear = dayjs().subtract(1, 'year').toDate()
+    const range = eachDayOfInterval(lastYear, new Date())
+    const len = Math.ceil(range.length / 7)
+    expect(len).toMatchInlineSnapshot('53')
+    expect(len * (10 + 2)).toMatchInlineSnapshot('636')
+  })
 })
