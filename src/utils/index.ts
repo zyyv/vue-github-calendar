@@ -1,6 +1,14 @@
 import dayjs from 'dayjs'
 import type { Day, WeekDay, Weeks } from '~/types/common'
 
+export interface Label {
+  x: number
+  y: number
+  text: string
+}
+
+export const MIN_DISTANCE_MONTH_LABELS = 2
+
 export const DEFAULT_MONTH_LABELS = [
   'Jan',
   'Feb',
@@ -49,6 +57,44 @@ export function groupByWeeks(days: Day[], weekStart: WeekDay = 0): Weeks {
   const paddedDays: Array<Day | undefined> = [...Array(differenceInCalendarDays(firstDate, firstCalendarDate)).fill(undefined), ...normalizedDays]
 
   return Array.from({ length: Math.ceil(paddedDays.length / 7) }, (_, i) => paddedDays.slice(i * 7, i * 7 + 7))
+}
+
+export function getMonth(date: Date) {
+  return date.getMonth()
+}
+
+export function getMonthLabels(
+  weeks: Weeks,
+  monthNames: Array<string> = DEFAULT_MONTH_LABELS,
+): Array<Label> {
+  return weeks.reduce<Array<Label>>((labels, week, index) => {
+    const firstWeekDay = week.find(day => day !== undefined)
+
+    if (!firstWeekDay)
+      throw new Error(`Unexpected error: Week is empty: [${week}]`)
+
+    const month = monthNames[getMonth(parseISO(firstWeekDay.date))]
+    const prev = labels[labels.length - 1]
+
+    if (index === 0 || prev.text !== month) {
+      return [
+        ...labels,
+        {
+          x: index,
+          y: -7,
+          text: month,
+        },
+      ]
+    }
+
+    return labels
+  }, [])
+    .filter((label, index, labels) => {
+      if (index === 0)
+        return labels[1] && labels[1].x - label.x > MIN_DISTANCE_MONTH_LABELS
+
+      return true
+    })
 }
 
 export function normalizeCalendarDays(days: Day[]): Day[] {
