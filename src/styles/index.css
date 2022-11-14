@@ -1,7 +1,0 @@
-html, body {
-  --at-apply: h-full base bg;
-}
-
-body::-webkit-scrollbar {
-  --at-apply: w0;
-}

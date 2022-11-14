@@ -21,7 +21,6 @@ declare global {
   const createSharedComposable: typeof import('@vueuse/core')['createSharedComposable']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
   const customRef: typeof import('vue')['customRef']
-  const datas: typeof import('./composables/contributions')['datas']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
@@ -104,7 +103,6 @@ declare global {
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const toggleDark: typeof import('./composables/useDark')['toggleDark']
-  const toggleLocales: typeof import('./composables/useLanguage')['toggleLocales']
   const triggerRef: typeof import('vue')['triggerRef']
   const tryOnBeforeMount: typeof import('@vueuse/core')['tryOnBeforeMount']
   const tryOnBeforeUnmount: typeof import('@vueuse/core')['tryOnBeforeUnmount']
@@ -137,7 +135,7 @@ declare global {
   const useCloned: typeof import('@vueuse/core')['useCloned']
   const useColorMode: typeof import('@vueuse/core')['useColorMode']
   const useConfirmDialog: typeof import('@vueuse/core')['useConfirmDialog']
-  const useContributions: typeof import('./composables/useGithub')['useContributions']
+  const useContributions: typeof import('./composables/useContributions')['useContributions']
   const useCounter: typeof import('@vueuse/core')['useCounter']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVar: typeof import('@vueuse/core')['useCssVar']
@@ -255,7 +253,6 @@ declare global {
   const useTransition: typeof import('@vueuse/core')['useTransition']
   const useUrlSearchParams: typeof import('@vueuse/core')['useUrlSearchParams']
   const useUserMedia: typeof import('@vueuse/core')['useUserMedia']
-  const useUserStore: typeof import('./store/user')['useUserStore']
   const useVModel: typeof import('@vueuse/core')['useVModel']
   const useVModels: typeof import('@vueuse/core')['useVModels']
   const useVibrate: typeof import('@vueuse/core')['useVibrate']
@@ -307,7 +304,6 @@ declare module 'vue' {
     readonly createSharedComposable: UnwrapRef<typeof import('@vueuse/core')['createSharedComposable']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
-    readonly datas: UnwrapRef<typeof import('./composables/contributions')['datas']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -390,7 +386,6 @@ declare module 'vue' {
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toggleDark: UnwrapRef<typeof import('./composables/useDark')['toggleDark']>
-    readonly toggleLocales: UnwrapRef<typeof import('./composables/useLanguage')['toggleLocales']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly tryOnBeforeMount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeMount']>
     readonly tryOnBeforeUnmount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeUnmount']>
@@ -423,7 +418,7 @@ declare module 'vue' {
     readonly useCloned: UnwrapRef<typeof import('@vueuse/core')['useCloned']>
     readonly useColorMode: UnwrapRef<typeof import('@vueuse/core')['useColorMode']>
     readonly useConfirmDialog: UnwrapRef<typeof import('@vueuse/core')['useConfirmDialog']>
-    readonly useContributions: UnwrapRef<typeof import('./composables/useGithub')['useContributions']>
+    readonly useContributions: UnwrapRef<typeof import('./composables/useContributions')['useContributions']>
     readonly useCounter: UnwrapRef<typeof import('@vueuse/core')['useCounter']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVar: UnwrapRef<typeof import('@vueuse/core')['useCssVar']>
@@ -541,7 +536,6 @@ declare module 'vue' {
     readonly useTransition: UnwrapRef<typeof import('@vueuse/core')['useTransition']>
     readonly useUrlSearchParams: UnwrapRef<typeof import('@vueuse/core')['useUrlSearchParams']>
     readonly useUserMedia: UnwrapRef<typeof import('@vueuse/core')['useUserMedia']>
-    readonly useUserStore: UnwrapRef<typeof import('./store/user')['useUserStore']>
     readonly useVModel: UnwrapRef<typeof import('@vueuse/core')['useVModel']>
     readonly useVModels: UnwrapRef<typeof import('@vueuse/core')['useVModels']>
     readonly useVibrate: UnwrapRef<typeof import('@vueuse/core')['useVibrate']>

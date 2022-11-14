@@ -1,12 +1,3 @@
-import type { App } from 'vue'
-
-export type UserModule = (ctx: App) => void
-
-export interface GlobModule {
-  install: UserModule
-  [key: string]: any
-}
-
 export type Level = 0 | 1 | 2 | 3 | 4
 
 export interface Day {
@@ -16,11 +7,12 @@ export interface Day {
 }
 
 type Week = Array<Day | undefined>
+
 export type Weeks = Week[]
 
 export type WeekDay = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
-export type Year = number | 'last'
+export type Year = number | 'last' // 2022 2021 ...
 
 export interface ApiResponse {
   total: {
@@ -30,6 +22,8 @@ export interface ApiResponse {
   contributions: Day[]
 }
 
-export interface ApiErrorResponse {
-  error: string
+export interface Label {
+  x: number
+  y: number
+  text: string
 }

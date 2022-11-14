@@ -78,52 +78,50 @@ onMounted(async() => {
 </script>
 
 <template>
-  <div>
-    <!-- <h1>{{ state.total }}</h1> -->
-    <svg :width="WIDTH" :height="HEIGHT">
-      <g :transform="`translate(${!props.hideWeekday ? STATIC_DATA.lrGap : -STATIC_DATA.lrGap + STATIC_DATA.bloclGap},${!props.hideMonth ? STATIC_DATA.tbGap : 1})`">
-        <template v-for="(list, index) in state.weeks" :key="index">
-          <g :transform="`translate(${index * (STATIC_DATA.blockWidth + 1)}, 0)`">
-            <template v-for="(item, i) in list" :key="i">
-              <rect
-                v-if="item"
-                :width="STATIC_DATA.blockSize"
-                :height="STATIC_DATA.blockSize"
-                :x="(STATIC_DATA.blockWidth) - index"
-                :y="i * (STATIC_DATA.blockWidth)"
-                :class="`fill-level-${item.level}`"
-                :rx="STATIC_DATA.blockRadius"
-                :ry="STATIC_DATA.blockRadius"
-                :data-count="item.count"
-                :data-date="item.date"
-                :data-level="item.level"
-              />
-            </template>
-          </g>
-        </template>
-        <!-- Month -->
-        <template v-if="!hideMonth">
-          <template v-for="(item, index) in state.labels" :key="index">
-            <text v-if="rawFilterMonth(index)" class="fill-[#adbac7] text-xs" :x="(STATIC_DATA.blockWidth) * (item.x + 1)" :y="item.y">
-              {{ item.text }}
-            </text>
+  <!-- <h1>{{ state.total }}</h1> -->
+  <svg :width="WIDTH" :height="HEIGHT">
+    <g :transform="`translate(${!props.hideWeekday ? STATIC_DATA.lrGap : -STATIC_DATA.lrGap + STATIC_DATA.bloclGap},${!props.hideMonth ? STATIC_DATA.tbGap : 1})`">
+      <template v-for="(list, index) in state.weeks" :key="index">
+        <g :transform="`translate(${index * (STATIC_DATA.blockWidth + 1)}, 0)`">
+          <template v-for="(item, i) in list" :key="i">
+            <rect
+              v-if="item"
+              :width="STATIC_DATA.blockSize"
+              :height="STATIC_DATA.blockSize"
+              :x="(STATIC_DATA.blockWidth) - index"
+              :y="i * (STATIC_DATA.blockWidth)"
+              :class="`fill-level-${item.level}`"
+              :rx="STATIC_DATA.blockRadius"
+              :ry="STATIC_DATA.blockRadius"
+              :data-count="item.count"
+              :data-date="item.date"
+              :data-level="item.level"
+            />
           </template>
+        </g>
+      </template>
+      <!-- Month -->
+      <template v-if="!hideMonth">
+        <template v-for="(item, index) in state.labels" :key="index">
+          <text v-if="rawFilterMonth(index)" class="fill-[#adbac7] text-xs" :x="(STATIC_DATA.blockWidth) * (item.x + 1)" :y="item.y">
+            {{ item.text }}
+          </text>
         </template>
-        <!-- Week -->
-        <template v-if="!hideWeekday">
-          <template v-for="(item, index) in DEFAULT_WEEKDAY_LABELS" :key="index">
-            <text
-              v-if="rawFilterWeekDay(index)"
-              class="fill-[#adbac7] text-xs"
-              dx="-15"
-              :dy="8 + index * (STATIC_DATA.blockWidth)"
-              text-anchor="start"
-            >
-              {{ item }}
-            </text>
-          </template>
+      </template>
+      <!-- Week -->
+      <template v-if="!hideWeekday">
+        <template v-for="(item, index) in DEFAULT_WEEKDAY_LABELS" :key="index">
+          <text
+            v-if="rawFilterWeekDay(index)"
+            class="fill-[#adbac7] text-xs"
+            dx="-15"
+            :dy="8 + index * (STATIC_DATA.blockWidth)"
+            text-anchor="start"
+          >
+            {{ item }}
+          </text>
         </template>
-      </g>
-    </svg>
-  </div>
+      </template>
+    </g>
+  </svg>
 </template>

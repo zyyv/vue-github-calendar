@@ -7,6 +7,7 @@ import type { ApiResponse } from '~/types/common'
 //   const data = await $fetch(API)
 //   return data as ApiResponse
 // }
+
 export const useContributions = async(username: string, _year = 'last') => {
   // const API = `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`
   // const data = await $fetch(API)
