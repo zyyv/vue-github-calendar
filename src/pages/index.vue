@@ -11,88 +11,98 @@ const go = () => {
 }
 
 useTitle('Modele | Home')
+
+const filterWeekDay = (index: number) => true
 </script>
 
 <template>
-  <div mx-10>
+  <div mx-10 space-y-4>
     <Github username="zyyv" />
-    <!-- <div f-c-c h-screen>
-      <header flex gap-5 py-2 px-5>
-        <button
-          bg-inherit
-          border-none
-          @click="toggleDark()"
-        >
-          <div
-            v-if="!isDark"
-            icon-btn
-            i-carbon:light-filled
-          />
-          <div
-            v-else
-            icon-btn
-            i-akar-icons:moon-fill
-          />
-        </button>
-        <Navlink
+    <Github username="zyyv" :month="5" />
+    <Github username="zyyv" :month="5" hide-month />
+    <Github username="zyyv" :month="5" hide-weekday />
+    <Github username="zyyv" :month="5" hide-month :filter-week-day="filterWeekDay" />
+
+    <div b="~ gray" rd-2 p-2 w-fit>
+      <Github username="zyyv" />
+    </div>
+
+    <div f-c-c h-screen />
+    <header flex gap-5 py-2 px-5>
+      <button
+        bg-inherit
+        border-none
+        @click="toggleDark()"
+      >
+        <div
+          v-if="!isDark"
           icon-btn
-          i-carbon:logo-github
-          to="https://github.com/chris-zhu/modele"
+          i-carbon:light-filled
         />
         <div
+          v-else
           icon-btn
-          i-carbon:language
-          @click="toggleLocales()"
+          i-akar-icons:moon-fill
         />
-      </header>
+      </button>
+      <Navlink
+        icon-btn
+        i-carbon:logo-github
+        to="https://github.com/chris-zhu/modele"
+      />
+      <div
+        icon-btn
+        i-carbon:language
+        @click="toggleLocales()"
+      />
+    </header>
 
-      <input
-        id="input"
-        v-model="name"
-        :placeholder="t('intro.whats-your-name')"
-        :aria-label="t('intro.whats-your-name')"
-        type="text"
-        autocomplete="false"
-        p="x-4 y-2"
-        w="250px"
-        text="center black-200 dark:gray"
-        bg="transparent"
-        border="~ rounded gray-200 dark:gray-700"
-        outline="none active:none"
-        @keydown.enter="go"
+    <input
+      id="input"
+      v-model="name"
+      :placeholder="t('intro.whats-your-name')"
+      :aria-label="t('intro.whats-your-name')"
+      type="text"
+      autocomplete="false"
+      p="x-4 y-2"
+      w="250px"
+      text="center black-200 dark:gray"
+      bg="transparent"
+      border="~ rounded gray-200 dark:gray-700"
+      outline="none active:none"
+      @keydown.enter="go"
+    >
+
+    <div>
+      <button
+        m-3
+        px-3
+        py-1
+        cursor-pointer
+        disabled:cursor-not-allowed
+        text="sm black-200 dark:gray"
+        border="~ rounded"
+        bg-gray-100
+        dark:bg-gray-700
+        :disabled="!name"
+        @click="go"
       >
-
-      <div>
+        {{ t('button.go') }}
+      </button>
+      <Navlink :to="`/${Math.floor(Math.random() * 10)}`">
         <button
           m-3
           px-3
           py-1
           cursor-pointer
-          disabled:cursor-not-allowed
           text="sm black-200 dark:gray"
           border="~ rounded"
           bg-gray-100
           dark:bg-gray-700
-          :disabled="!name"
-          @click="go"
         >
-          {{ t('button.go') }}
+          {{ t('not-found') }}
         </button>
-        <Navlink :to="`/${Math.floor(Math.random() * 10)}`">
-          <button
-            m-3
-            px-3
-            py-1
-            cursor-pointer
-            text="sm black-200 dark:gray"
-            border="~ rounded"
-            bg-gray-100
-            dark:bg-gray-700
-          >
-            {{ t('not-found') }}
-          </button>
-        </Navlink>
-      </div>
-    </div> -->
+      </Navlink>
+    </div>
   </div>
 </template>
