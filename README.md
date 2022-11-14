@@ -5,7 +5,8 @@
 <p align="center">Github activity calendar with vue3 component</p>
 
 
-## Usage
+## Usage (Hold on, I'm releasing it soon)
+
 ```bash
 npm i vue3-github-calendar
 ```
@@ -17,3 +18,7 @@ npm i vue3-github-calendar
   </div>
 </template>
 ```
+
+You can see the effect first, documentation is coming soon.
+
+![Demo.png](./src/assets/img/demo.png)
