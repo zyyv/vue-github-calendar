@@ -34,7 +34,7 @@ const filterWeekDay = () => true
 </template>
 
 <style>
-html, body {
-  --uno: h-full text bg;
+body {
+  --uno: bg text;
 }
 </style>

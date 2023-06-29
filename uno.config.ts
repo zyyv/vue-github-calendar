@@ -27,5 +27,9 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
   ],
+  shortcuts: {
+    bg: 'bg-#eee dark:bg-#222',
+    text: 'text-#333 dark:text-#ddd',
+  },
   safelist: ['fill-level-0', 'fill-level-1', 'fill-level-2', 'fill-level-3', 'fill-level-4'],
 })
