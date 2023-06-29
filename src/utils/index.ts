@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import type { Day, WeekDay, Weeks } from '~/types/common'
+import type { Day, WeekDay, Weeks } from '~/types'
 
 export interface Label {
   x: number
@@ -47,7 +47,8 @@ export function formatDate(date: Date) {
 }
 
 export function groupByWeeks(days: Day[], weekStart: WeekDay = 0): Weeks {
-  if (days.length === 0) return []
+  if (days.length === 0)
+    return []
 
   const normalizedDays = normalizeCalendarDays(days)
 

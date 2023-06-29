@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts, transformerDirectives } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno, transformerDirectives } from 'unocss'
 import { presetUseful } from 'unocss-preset-useful'
 
 export default defineConfig({
@@ -22,11 +22,6 @@ export default defineConfig({
     presetUno({ preflight: true }),
     presetAttributify(),
     presetIcons(),
-    presetWebFonts({
-      fonts: {
-        lobster: 'Lobster',
-      },
-    }),
     presetUseful(),
   ],
   transformers: [

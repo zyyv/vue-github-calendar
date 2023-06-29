@@ -1,6 +1,8 @@
 // import { $fetch } from 'ohmyfetch'
-import DATA from '~/data/contributions.json'
-import type { ApiResponse } from '~/types/common'
+import { $fetch } from 'ohmyfetch'
+
+// import DATA from '~/data/contributions.json'
+import type { ApiResponse } from '~/types'
 
 // export const useContributions = async(username: string, year = 'last') => {
 //   const API = `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`
@@ -8,9 +10,8 @@ import type { ApiResponse } from '~/types/common'
 //   return data as ApiResponse
 // }
 
-export const useContributions = async(username: string, _year = 'last') => {
-  // const API = `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`
-  // const data = await $fetch(API)
-  return DATA as ApiResponse
-  // return JSON.parse(DATA) as ApiResponse
+export async function useContributions(username: string, _year = 'last') {
+  const API = `https://github-contributions-api.jogruber.de/v4/${username}?y=${_year}`
+
+  return await $fetch<ApiResponse>(API)
 }

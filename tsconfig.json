@@ -12,7 +12,7 @@
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
+      "~/*": ["src/*"]
     },
     "types": ["vite/client", "vite-plugin-pages/client", "vite-plugin-vue-layouts/client"]
   },

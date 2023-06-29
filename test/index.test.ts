@@ -5,7 +5,7 @@ import { eachDayOfInterval, formatDate, formatISO } from '../src/utils/index'
 describe('utils test', () => {
   it('formatDate', () => {
     const date = new Date()
-    expect(formatDate(date)).toMatchInlineSnapshot('"Nov 14, 2022"')
+    expect(formatDate(date)).toMatchInlineSnapshot('"Nov 15, 2022"')
     const arr: number[] = []
     for (let i = 0; i < 12; i++)
       arr.push(i * 64)
@@ -41,7 +41,6 @@ describe('utils test', () => {
     expect(days.length).toBe(11)
     expect(range.map(day => formatISO(day, { representation: 'date' }))).toMatchInlineSnapshot(`
       [
-        "2022-10-14",
         "2022-10-15",
         "2022-10-16",
         "2022-10-17",
@@ -73,6 +72,7 @@ describe('utils test', () => {
         "2022-11-12",
         "2022-11-13",
         "2022-11-14",
+        "2022-11-15",
       ]
     `)
   })

@@ -1,16 +1,18 @@
 <script lang='ts' setup>
-import { reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import dayjs from 'dayjs'
-import { ApiResponse, Day, Weeks } from '~/types/common'
-import { DEFAULT_WEEKDAY_LABELS, Label, eachDayOfInterval, formatISO, getMonthLabels, groupByWeeks } from '~/utils'
+import type { ApiResponse, Day, Weeks } from '~/types'
+import type { Label } from '~/utils'
+import { DEFAULT_WEEKDAY_LABELS, eachDayOfInterval, formatISO, getMonthLabels, groupByWeeks } from '~/utils'
+import { useContributions } from '~/composables/useContributions'
 
 const props = withDefaults(defineProps<{
   username: string
   month?: number
   hideMonth?: boolean
   hideWeekday?: boolean
-  filterWeekDay? :(index: number) => boolean
-  filterMonth? :(index: number) => boolean
+  filterWeekDay?: (index: number) => boolean
+  filterMonth?: (index: number) => boolean
 }>(), {
   hideMonth: false,
   hideWeekday: false,
@@ -63,7 +65,7 @@ function filterLastByMonth(contributions: Day[], month: number) {
   return contributions.filter(day => range.includes(day.date))
 }
 
-onMounted(async() => {
+onMounted(async () => {
   const data = await useContributions(props.username)
   let contributions = data.contributions
   let total = data.total
@@ -80,7 +82,9 @@ onMounted(async() => {
 <template>
   <!-- <h1>{{ state.total }}</h1> -->
   <svg :width="WIDTH" :height="HEIGHT">
-    <g :transform="`translate(${!props.hideWeekday ? STATIC_DATA.lrGap : -STATIC_DATA.lrGap + STATIC_DATA.bloclGap},${!props.hideMonth ? STATIC_DATA.tbGap : 1})`">
+    <g
+      :transform="`translate(${!props.hideWeekday ? STATIC_DATA.lrGap : -STATIC_DATA.lrGap + STATIC_DATA.bloclGap},${!props.hideMonth ? STATIC_DATA.tbGap : 1})`"
+    >
       <template v-for="(list, index) in state.weeks" :key="index">
         <g :transform="`translate(${index * (STATIC_DATA.blockWidth + 1)}, 0)`">
           <template v-for="(item, i) in list" :key="i">
@@ -103,7 +107,12 @@ onMounted(async() => {
       <!-- Month -->
       <template v-if="!hideMonth">
         <template v-for="(item, index) in state.labels" :key="index">
-          <text v-if="rawFilterMonth(index)" class="fill-[#adbac7] text-xs" :x="(STATIC_DATA.blockWidth) * (item.x + 1)" :y="item.y">
+          <text
+            v-if="rawFilterMonth(index)"
+            class="fill-[#adbac7] text-xs"
+            :x="(STATIC_DATA.blockWidth) * (item.x + 1)"
+            :y="item.y"
+          >
             {{ item.text }}
           </text>
         </template>

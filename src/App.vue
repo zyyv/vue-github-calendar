@@ -1,5 +1,6 @@
-<script setup lang="ts" name="Home">
-useTitle('Vue Github Calendar')
+<script setup lang="ts">
+import { isDark, toggleDark } from './composables/useDark'
+import GC from './components/GC.vue'
 
 const filterWeekDay = () => true
 </script>
@@ -34,10 +35,6 @@ const filterWeekDay = () => true
 
 <style>
 html, body {
-  --at-apply: h-full base bg;
-}
-
-body::-webkit-scrollbar {
-  --at-apply: w0;
+  --uno: h-full text bg;
 }
 </style>

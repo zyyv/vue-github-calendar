@@ -1,24 +1,23 @@
 {
   "name": "vitesse",
-  "description": "一个麻雀虽小但五脏俱全的Vue3模板。（Vitesse style of myself）",
   "type": "module",
-  "version": "1.0.0",
-  "keywords": [
-    "vue3",
-    "vue3-template",
-    "vitesse"
-  ],
-  "license": "MIT",
+  "version": "0.0.0",
+  "description": "A Vue component of github calendar.",
   "author": "chris-zhu <https://github.com/chris-zhu>",
+  "license": "MIT",
+  "homepage": "https://github.com/chris-zhu/vitesse#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chris-zhu/vitesse.git"
   },
-  "main": "src/main.ts",
   "bugs": {
     "url": "https://github.com/chris-zhu/vitesse/issues"
   },
-  "homepage": "https://github.com/chris-zhu/vitesse#readme",
+  "keywords": [
+    "Vue Component",
+    "Github Calendar"
+  ],
+  "main": "src/main.ts",
   "scripts": {
     "dev": "vite --force --port=1111",
     "build": "vue-tsc --noEmit && vite build",
@@ -30,42 +29,42 @@
     "test:update": "vitest -u"
   },
   "dependencies": {
-    "@chris-zhu/utils": "^0.0.17",
-    "@unocss/reset": "^0.46.4",
-    "@vueuse/core": "^9.5.0",
-    "dayjs": "^1.11.6",
-    "pinia": "^2.0.23",
-    "vue": "^3.2.45",
+    "@chris-zhu/utils": "^0.0.18",
+    "@unocss/reset": "^0.53.4",
+    "@vueuse/core": "^10.2.1",
+    "dayjs": "^1.11.8",
+    "pinia": "^2.1.4",
+    "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.2.2"
   },
   "devDependencies": {
-    "@babel/types": "^7.20.2",
-    "@chris-zhu/eslint-config": "^1.0.7",
-    "@iconify-json/akar-icons": "^1.1.10",
-    "@iconify-json/carbon": "^1.1.9",
-    "@iconify-json/logos": "^1.1.18",
-    "@intlify/vite-plugin-vue-i18n": "^6.0.3",
-    "@types/fs-extra": "^9.0.13",
-    "@types/node": "^18.11.9",
-    "@vitejs/plugin-vue": "^3.2.0",
-    "axios": "^1.1.3",
-    "eslint": "8.27.0",
+    "@antfu/eslint-config": "^0.39.6",
+    "@babel/types": "^7.22.5",
+    "@iconify-json/akar-icons": "^1.1.17",
+    "@iconify-json/carbon": "^1.1.18",
+    "@iconify-json/logos": "^1.1.33",
+    "@intlify/vite-plugin-vue-i18n": "^7.0.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^20.3.2",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "axios": "^1.4.0",
+    "eslint": "8.43.0",
     "esno": "^0.16.3",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.1",
     "ohmyfetch": "^0.4.21",
-    "sass": "^1.56.1",
-    "typescript": "^4.8.4",
-    "unocss": "^0.46.4",
-    "unocss-preset-useful": "^0.0.7",
-    "unplugin-auto-import": "^0.11.4",
-    "unplugin-vue-components": "^0.22.9",
-    "vite": "^3.2.3",
-    "vite-plugin-md": "^0.20.4",
-    "vite-plugin-pages": "^0.27.1",
-    "vite-plugin-vue-layouts": "^0.7.0",
+    "sass": "^1.63.6",
+    "typescript": "^5.1.6",
+    "unocss": "^0.53.4",
+    "unocss-preset-useful": "^0.0.12",
+    "unplugin-auto-import": "^0.16.4",
+    "unplugin-vue-components": "^0.25.1",
+    "vite": "^4.3.9",
+    "vite-plugin-md": "^0.21.5",
+    "vite-plugin-pages": "^0.31.0",
+    "vite-plugin-vue-layouts": "^0.8.0",
     "vite-plugin-vue-setup-extend": "^0.4.0",
-    "vitest": "^0.25.1",
-    "vue-tsc": "^1.0.9"
+    "vitest": "^0.32.2",
+    "vue-tsc": "^1.8.3"
   }
 }
