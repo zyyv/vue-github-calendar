@@ -1,10 +1,10 @@
 <script lang='ts' setup>
 import { computed, onMounted, reactive } from 'vue'
 import dayjs from 'dayjs'
-import type { ApiResponse, Day, Weeks } from '~/types'
-import type { Label } from '~/utils'
 import { DEFAULT_WEEKDAY_LABELS, eachDayOfInterval, formatISO, getMonthLabels, groupByWeeks } from '~/utils'
 import { useContributions } from '~/composables/useContributions'
+import type { Label } from '~/utils'
+import type { ApiResponse, Day, Weeks } from '~/types'
 
 const props = withDefaults(defineProps<{
   username: string
@@ -43,17 +43,19 @@ const state = reactive<{
 })
 
 const WIDTH = computed(() => {
-  return state.weeks.length * STATIC_DATA.blockSize
+  const w = state.weeks.length * STATIC_DATA.blockSize
     + (state.weeks.length - 1) * STATIC_DATA.bloclGap
     + (!props.hideWeekday ? STATIC_DATA.lrGap * 2 : 0)
     + 1
+  return w > 0 ? w : 300
 })
 
 const HEIGHT = computed(() => {
-  return 7 * STATIC_DATA.blockSize
+  const h = 7 * STATIC_DATA.blockSize
     + 6 * STATIC_DATA.bloclGap
     + (!props.hideMonth ? STATIC_DATA.tbGap : 0)
     + 4
+  return h > 0 ? h : 90
 })
 
 function filterLastByMonth(contributions: Day[], month: number) {
@@ -80,7 +82,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <!-- <h1>{{ state.total }}</h1> -->
   <svg :width="WIDTH" :height="HEIGHT">
     <g
       :transform="`translate(${!props.hideWeekday ? STATIC_DATA.lrGap : -STATIC_DATA.lrGap + STATIC_DATA.bloclGap},${!props.hideMonth ? STATIC_DATA.tbGap : 1})`"
@@ -109,7 +110,7 @@ onMounted(async () => {
         <template v-for="(item, index) in state.labels" :key="index">
           <text
             v-if="rawFilterMonth(index)"
-            class="fill-[#adbac7] text-xs"
+            class="fill-$gc-text text-xs"
             :x="(STATIC_DATA.blockWidth) * (item.x + 1)"
             :y="item.y"
           >
@@ -118,11 +119,11 @@ onMounted(async () => {
         </template>
       </template>
       <!-- Week -->
-      <template v-if="!hideWeekday">
+      <template v-if="!hideWeekday && state.weeks.length">
         <template v-for="(item, index) in DEFAULT_WEEKDAY_LABELS" :key="index">
           <text
             v-if="rawFilterWeekDay(index)"
-            class="fill-[#adbac7] text-xs"
+            class="fill-$gc-text text-xs"
             dx="-15"
             :dy="8 + index * (STATIC_DATA.blockWidth)"
             text-anchor="start"

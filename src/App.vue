@@ -18,14 +18,14 @@ const filterWeekDay = () => true
         <div v-if="!isDark" icon-btn i-carbon:light-filled />
         <div v-else icon-btn i-akar-icons:moon-fill />
       </button>
-      <Navlink icon-btn cursor-pointer i-carbon:logo-github to="https://github.com/zyyv/vue-github-calendar" />
+      <a icon-btn cursor-pointer i-carbon:logo-github href="https://github.com/zyyv/vue-github-calendar" target="_blank" />
     </header>
     <div mt-10 px-10 space-y-4>
       <div b="~ gray" rd-2 p-2 w-fit>
         <GC username="zyyv" />
       </div>
       <GC username="zyyv" />
-      <GC username="zyyv" :month="5" />
+      <GC username="zyyv" :month="2" />
       <GC username="zyyv" :month="5" hide-month />
       <GC username="zyyv" :month="5" hide-weekday />
       <GC username="zyyv" :month="5" hide-month :filter-week-day="filterWeekDay" />
