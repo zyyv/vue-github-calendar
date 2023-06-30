@@ -18,7 +18,7 @@ const filterWeekDay = () => true
         <div v-if="!isDark" icon-btn i-carbon:light-filled />
         <div v-else icon-btn i-akar-icons:moon-fill />
       </button>
-      <Navlink icon-btn i-carbon:logo-github to="https://github.com/chris-zhu/modele" />
+      <Navlink icon-btn cursor-pointer i-carbon:logo-github to="https://github.com/zyyv/vue-github-calendar" />
     </header>
     <div mt-10 px-10 space-y-4>
       <div b="~ gray" rd-2 p-2 w-fit>
